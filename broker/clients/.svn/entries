@@ -1,0 +1,64 @@
+10
+
+dir
+1626
+svn://softwarelivre.sapo.pt/broker/trunk/clients
+svn://softwarelivre.sapo.pt/broker
+
+
+
+2012-07-04T16:45:12.178805Z
+1626
+jcc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+b5e76149-5b1e-0410-8289-f826a2598d57
+
+dotnet-component
+dir
+
+javascript-bridge
+dir
+
+tools
+dir
+
+java-component
+dir
+
+python-component
+dir
+
+ruby-component
+dir
+
+c-component
+dir
+
+perl-component
+dir
+
+php-ext-component
+dir
+
+quartz-component
+dir
+
+php-component
+dir
+
+erlang-component
+dir
+

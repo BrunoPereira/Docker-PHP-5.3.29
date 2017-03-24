@@ -1,0 +1,31 @@
+K 10
+svn:ignore
+V 298
+.deps
+acinclude.m4
+aclocal.m4
+autom4te.cache
+build
+config.guess
+config.h
+config.h.in
+config.log
+config.status
+config.sub
+config.nice
+configure
+configure.in
+include
+run-tests.php
+install-sh
+libtool
+ltmain.sh
+Makefile
+Makefile.fragments
+Makefile.global
+Makefile.objects
+missing
+mkinstalldirs
+modules
+
+END
