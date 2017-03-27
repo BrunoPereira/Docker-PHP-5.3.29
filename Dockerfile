@@ -26,12 +26,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       re2c \
       automake \
       libtool \
-      libtool-bin 
+      libtool-bin \
       protobuf-compiler \
       protobuf-c-compiler \
       libprotobuf-dev \
       libprotobuf9 \
-      libprotobuf-lite9\ 
+      libprotobuf-lite9 \ 
     && apt-get clean \
     && rm -r /var/lib/apt/lists/*
 
@@ -113,18 +113,17 @@ RUN buildDeps=" \
             --enable-zip \
       && make -j"$(nproc)" \
       && make install \
-      && { find /usr/local/bin /usr/local/sbin -type f -executable -exec strip --strip-all '{}' + || true; } \
-      && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps \
-      && make clean
+      && { find /usr/local/bin /usr/local/sbin -type f -executable -exec strip --strip-all '{}' + || true; } 
 
    #### Install PHP extensions
    # Install Broker - PHP extension
-RUN     cd /tmp \
-        && curl -sL "https://github.com/BrunoPereira/Docker-PHP-5.3.29/broker.tar.xz" broker.tar.xz \
-        && tar -xzf broker.tar.xz -C broker \
-        && cd /tmp/broker/clients/c-component/libsapo-broker2 \
-        && ./bootstrap && ./configure && make all && make install \
-        && cd /tmp/broker/clients/php-ext-component/ \
+RUN     mkdir -p /tmp/broker \
+        && cd /tmp \
+        && curl -sL "https://github.com/BrunoPereira/Docker-PHP-5.3.29/blob/master/broker.tar.xz?raw=true" > broker.tar.xz \
+        && tar -xvf broker.tar.xz 
+RUN     cd /tmp/broker/clients/c-component/libsapo-broker2 \
+        && ./bootstrap && ./configure && make all && make install 
+RUN     cd /tmp/broker/clients/php-ext-component/ \
         && phpize && ./configure && make && make install \
         && libtool --finish /tmp/broker/clients/php-ext-component/modules \
         && echo "extension=sapobroker.so" > /usr/local/etc/php/conf.d/sapobroker.ini \
