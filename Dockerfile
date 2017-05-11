@@ -14,7 +14,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get clean \
     && rm -r /var/lib/apt/lists/*
 
-# phpize & broker deps
+RUN echo "deb http://ftp.uk.debian.org/debian jessie-backports main" >> /etc/apt/sources.list
+
+# phpize & cron & broker deps
 RUN apt-get update && apt-get install -y --no-install-recommends \
       autoconf \
       file \
@@ -24,6 +26,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       make \
       pkg-config \
       re2c \
+      cron \
       automake \
       libtool \
       libtool-bin \
@@ -31,7 +34,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       protobuf-c-compiler \
       libprotobuf-dev \
       libprotobuf9 \
-      libprotobuf-lite9 \ 
+      libprotobuf-lite9 \
+      ffmpeg \ 
     && apt-get clean \
     && rm -r /var/lib/apt/lists/*
 
